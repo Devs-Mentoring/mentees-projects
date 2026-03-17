@@ -1,0 +1,40 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.slider {
+  &-wrapper {
+    width: 100%;
+    margin: 0 auto 1.5rem auto;
+    z-index: auto !important;
+  }
+
+  &-track {
+    top: 12.5px;
+    height: 10px;
+    background-color: c.$background-dark_dark;
+    border-radius: c.$border-radius;
+    z-index: auto !important;
+  }
+
+  &-thumb {
+    height: 35px;
+    line-height: 35px;
+    width: 35px;
+    text-align: center;
+    border-radius: 50%;
+    color: c.$font-color_primary;
+    background-color: c.$background-dark_light;
+    z-index: auto !important;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: c.$background-dark_lightest;
+    }
+
+    &:active {
+      color: c.$font-color_primary;
+      background-color: c.$background-dark_lightest;
+    }
+  }
+}

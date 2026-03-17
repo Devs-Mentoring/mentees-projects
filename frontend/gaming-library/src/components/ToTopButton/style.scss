@@ -1,0 +1,61 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.to-top-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 50px;
+  height: 50px;
+  width: 50px;
+  background: c.$background-dark_dark;
+  color: c.$font-color_secondary;
+  z-index: 100;
+  border-radius: 50%;
+
+  & > svg {
+    transform: translateY(-2px);
+  }
+
+  &:hover {
+    background: c.$background-dark_light;
+  }
+
+  // TODO ADD override to btn-primary check if that can be overriden at top
+  &:active {
+    background-color: c.$background-dark_light !important;
+  }
+
+  &:focus-visible {
+    background: c.$background-dark_light;
+  }
+}
+
+.scale_in {
+  animation: scale-in 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.scale_out {
+  animation: scale-out 0.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 1;
+  }
+}

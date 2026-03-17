@@ -1,0 +1,23 @@
+@use '/src/globals/styles//constants' as c;
+@use '/src/globals/styles/mixins' as m;
+
+.notFound {
+    &-wrapper {
+        width: 100%;
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: border-bottom 200ms;
+
+        & a{
+            margin: 1rem 0;
+            transition: color 300;
+            
+            &:hover {
+                color: c.$background-dark_lightest;
+            }
+        }
+    }
+}

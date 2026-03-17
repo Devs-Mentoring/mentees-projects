@@ -1,0 +1,25 @@
+@use './constants' as c;
+@import './base';
+
+// TODO REMINDER - Overrides of the bootstrap styles
+$primary: c.$background-dark_darkest;
+$secondary: c.$background-dark_light;
+$btn-disabled-opacity: 50%;
+$text-primary: c.$font-color_primary;
+$text-secondary: c.$font-color_secondary;
+$bg-primary: c.$background-dark_darkest;
+$bg-secondary: c.$background-dark_light;
+$body-bg: c.$background-dark_darkest;
+
+$body-color: c.$font-color_primary;
+$nav-color: c.$font-color_primary;
+
+$link-color: c.$font-color_secondary;
+$link-hover-color: c.$font-color_primary;
+
+// INPUTS
+$input-border-color: transparent;
+
+
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+

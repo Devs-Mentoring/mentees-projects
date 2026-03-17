@@ -1,0 +1,102 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: auto;
+
+  & > div {
+    width: 100%;
+  }
+
+  & label {
+    margin: 4px 0;
+    font-size: small;
+  }
+}
+
+.react-datepicker {
+  @include m.list_shadow;
+
+  &-wrapper {
+    width: 100%;
+  }
+
+  &__month-container {
+    background-color: c.$background-dark_dark;
+    color: c.$font-color_primary;
+    border-radius: c.$border-radius;
+  }
+
+  &__header {
+    background-color: c.$background-dark_dark;
+    border-bottom: 1px solid c.$font-color_primary;
+
+  }
+
+  &__day-name {
+    color: c.$font-color_primary;
+  }
+
+  &__day {
+    color: c.$font-color_primary;
+
+    &--selected {
+      background-color: c.$background-dark_lightest;
+    }
+
+    &--keyboard-selected {
+      background-color: c.$background-dark_lightest;
+    }
+
+    &:hover {
+      background-color: c.$background-dark_light;
+    }
+  }
+
+  &__current-month {
+    color: c.$font-color_primary;
+  }
+
+  &__triangle {
+    color: c.$background-dark_dark !important;
+    fill: c.$background-dark_dark !important;
+  }
+
+  &__year-dropdown {
+    background-color: c.$background-dark_dark;
+  }
+
+  &__year-option {
+    &:hover {
+      background-color: c.$background-dark_light;
+    }
+  }
+
+  &__navigation--years {
+    color: c.$font-color_primary;
+  }
+}
+
+.date-input {
+  width: 100%;
+  background-color: c.$background-dark_dark;
+  transition: background-color 0.2s ease-in-out;
+
+  & div {
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: c.$background-dark_light;
+  }
+
+  &:focus {
+    background-color: c.$background-dark_light;
+  }
+}

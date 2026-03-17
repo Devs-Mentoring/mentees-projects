@@ -1,0 +1,92 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.navbar {
+  height: c.$nav-height;
+  padding: 0;
+  background-color: c.$background-dark_darker;
+  -webkit-box-shadow: 1px 5px 16px -3px rgba(5, 5, 5, 0.25);
+  -moz-box-shadow: 1px 5px 16px -3px rgba(5, 5, 5, 0.25);
+  box-shadow: 1px 5px 16px -3px rgba(5, 5, 5, 0.25);
+
+  & > .container {
+    @include m.global-max-width;
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+  }
+
+  &-nav {
+    .nav-link {
+      align-self: center;
+
+      &.active {
+        color: c.$font-color_primary;
+        opacity: 1;
+
+        &:focus {
+          color: c.$font-color_primary;
+        }
+
+        &::before {
+          width: 100%;
+        }
+      }
+
+      &:focus {
+        color: c.$font-color_secondary;
+      }
+    }
+  }
+
+  &-brand {
+    align-self: flex-start;
+    color: c.$font-color_primary;
+    font-size: x-large;
+    font-weight: 800;
+
+    &:hover {
+      color: c.$font-color_primary;
+    }
+
+    &:focus {
+      color: c.$font-color_primary;
+    }
+
+    &.active {
+      color: c.$font-color_primary;
+    }
+
+    :nth-child(2n) {
+      color: c.$background-dark_lightest;
+      font-weight: 700;
+    }
+  }
+}
+
+.nav-link {
+  position: relative;
+  color: c.$font-color_primary;
+  font-size: large;
+  opacity: 0.5;
+  transition: all 0.3s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: -1px;
+    width: 0;
+    height: 4px;
+    background-color: c.$font-color_primary;
+    transition: all .5s;
+  }
+
+  &:hover {
+    color: c.$font-color_primary;
+    opacity: 1;
+  }
+
+  &:focus {
+    opacity: 1;
+  }
+}

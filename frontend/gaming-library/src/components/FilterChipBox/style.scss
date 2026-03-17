@@ -1,0 +1,16 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.chip-wrapper {
+  min-height: 105px;
+  max-height: 150px;
+  width: 100%;
+  line-height: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  gap: 0.5rem;
+  background-color: c.$background-dark_dark;
+  cursor: default;
+}

@@ -1,0 +1,45 @@
+@use './constants' as c;
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin global-page-padding {
+  padding: min(200px, 2%);
+}
+
+@mixin global-max-width {
+  max-width: 1800px;
+  margin: auto;
+}
+
+@mixin icon_btn {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover > svg {
+    color: c.$font-color_primary;
+  }
+
+  & svg {
+    height: 30px;
+    width: 30px;
+    color: c.$font-color_secondary;
+    transition: all 0.2s;
+  }
+}
+
+@mixin list_shadow {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

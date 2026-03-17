@@ -1,0 +1,59 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.filter-chip {
+  &_wrapper {
+    height: 40px;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3rem;
+    border-radius: 50rem;
+    background-color: c.$background-dark_light;
+    align-content: center;
+  }
+
+  &_text {
+    margin: 0 0.3rem 0 0.4rem;
+    line-height: 19px;
+    color: c.$font-color_primary;
+  }
+
+  &_btn {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    padding: 4px;
+    color: c.$font-color_secondary;
+    background-color: transparent;
+    border: none;
+    border-radius: 50rem;
+
+    &:hover {
+      color: c.$font-color_primary;
+      background-color: transparent;
+      border: none;
+    }
+
+    &:focus {
+      color: c.$font-color_primary;
+      background-color: transparent;
+      border: none;
+    }
+
+    &:focus-visible {
+      color: c.$font-color_primary;
+      background-color: transparent;
+      border: none;
+    }
+
+    &:active {
+      color: c.$font-color_primary;
+      background-color: inherit !important;
+      border: none;
+    }
+  }
+}
+

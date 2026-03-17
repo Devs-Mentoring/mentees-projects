@@ -1,0 +1,68 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.suggestion_wrapper {
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  padding: 1em 0;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background-color: c.$background-dark_dark;
+  z-index: 10000000;
+}
+
+.list-group-item {
+  max-height: 80px;
+  display: flex;
+  flex-direction: row;
+  background-color: c.$background-dark_dark;
+  color: c.$font-color_primary;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: c.$background-dark_light;
+  }
+}
+
+.img_wrapper {
+  width: 10%;
+  height: 60px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  background-image: url('../../img/rawg-img-placeholder.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.text_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 2%;
+}
+
+.badge_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.result-text_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em 0 1em;
+}

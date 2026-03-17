@@ -1,0 +1,67 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.section-wrapper {
+  @include m.global-page-padding;
+  @include m.global-max-width;
+  min-height: 95vh;
+  width: 100%;
+}
+
+.tiles-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-auto-rows: minmax(0, 320px);
+  margin: 2rem auto;
+  width: 100%;
+  min-height: 95vh;
+  gap: 25px;
+  z-index: 400;
+
+  &:hover > a > .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+
+  &:hover > a > .card:not(:hover) {
+    opacity: 0.5;
+  }
+
+  a {
+    height: 100%;
+
+    .card {
+      height: 100%;
+    }
+  }
+}
+
+.no-more {
+  text-align: center;
+  width: 100%;
+}
+
+.filtering {
+  &-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+    z-index: 250;
+  }
+
+  &-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background-color: c.$background-dark_dark;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: c.$background-dark_light;
+    }
+  }
+}

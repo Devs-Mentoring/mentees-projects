@@ -1,0 +1,22 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.metacritic-badge {
+
+  &_wrapper {
+    padding: 10px;
+    border-radius: c.$border-radius;
+    color: c.$font-color_primary;
+  }
+
+  &_primary {
+    background-color: c.$darkest-semi-opaque;
+    font-size: large;
+  }
+
+  &_secondary {
+    background-color: c.$background-dark_light;
+    font-size: xx-large;
+  }
+}
+

@@ -1,0 +1,62 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+
+.card {
+  position: relative;
+  background-color: c.$background-dark_light;
+  border-radius: c.$border-radius;
+  z-index: 100;
+  transition: all .2s ease-in-out;
+
+  &-header {
+    position: absolute;
+    bottom: 1rem;
+    width: 95%;
+    margin: 0 2.5%;
+    padding: 17px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    background: c.$darkest-semi-opaque;
+    border-radius: 20px 0;
+  }
+
+  &-title {
+    margin: 0;
+    color: c.$font-color_primary;
+  }
+
+  &-text {
+    font-size: small;
+  }
+}
+
+
+.img-container {
+  width: 100%;
+  position: relative;
+  max-height: 320px;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: c.$border-radius c.$border-radius 0 0;
+  background-image: url('../../img/rawg-img-placeholder.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.rating-container {
+  padding: 8px;
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  min-width: 60px;
+}

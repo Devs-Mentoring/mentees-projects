@@ -1,0 +1,15 @@
+.spinner {
+  &-wrapper {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-height {
+    width: 150px;
+    height: 150px;
+  }
+}

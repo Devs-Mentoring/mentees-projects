@@ -1,0 +1,54 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.filter-form {
+  height: 100%;
+  position: relative;
+}
+
+.offcanvas {
+  background-color: c.$background-dark_darker;
+
+  &-body {
+    min-height: 80%;
+    height: 80%;
+    padding-top: 0;
+    margin-bottom: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 8px;
+    }
+  }
+
+  &_button-wrapper {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    bottom: 1rem;
+    padding: 1rem 0.5rem 0 0.5rem;
+    background-color: c.$background-dark_darker;
+
+    & button {
+      padding: 12px;
+      flex-grow: 1;
+    }
+
+    & .btn-outline-secondary {
+      border: 1px solid c.$background-dark_dark;
+
+      &:hover {
+        background-color: c.$background-dark_dark;
+      }
+    }
+  }
+}

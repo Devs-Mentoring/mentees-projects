@@ -1,0 +1,20 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.footer {
+  &-wrapper {
+    @include m.flex-row;
+    justify-content: center;
+    gap: 10px;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: c.$footer-min-height;
+    margin-top: auto;
+    background-color: c.$background-dark_darker;
+    z-index: 1000;
+    -webkit-box-shadow: 1px -8px 16px -3px rgba(5, 5, 5, 0.25);
+    -moz-box-shadow: 1px -8px 16px -3px rgba(5, 5, 5, 0.25);
+    box-shadow: 1px -8px 16px -3px rgba(5, 5, 5, 0.25);
+  }
+}

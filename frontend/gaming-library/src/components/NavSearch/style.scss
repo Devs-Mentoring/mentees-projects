@@ -1,0 +1,52 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.input-group {
+  position: relative;
+  width: 95%;
+  margin-left: 5%;
+  transition: opacity 0.2s;
+
+  &:focus-within .suggestion_wrapper {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  & > .form-control {
+    padding-left: 35px;
+    border-radius: c.$border-radius;
+    background-color: c.$background-dark_dark;
+    transition: background-color 0.2s ease-in-out;
+
+    &:active {
+      background-color: c.$background-dark_light;
+    }
+
+    &:focus {
+      background-color: c.$background-dark_light;
+    }
+
+    &:hover {
+      background-color: c.$background-dark_light;
+    }
+  }
+}
+
+.search-icon_wrapper {
+  position: absolute;
+  left: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 10000;
+}
+
+.close-icon_wrapper {
+  position: absolute;
+  right: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 10000;
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+@use '/src/globals/styles/mixins' as m;
+@use '/src/globals/styles/constants' as c;
+
+.icon-row {
+  &_wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    color: c.$font-color_secondary;
+  }
+
+  &_extra-text {
+    line-height: 25px;
+    padding: 0 5px;
+    font-size: large;
+  }
+}

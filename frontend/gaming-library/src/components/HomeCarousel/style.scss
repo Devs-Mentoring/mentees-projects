@@ -1,0 +1,44 @@
+@use '/src/globals/styles/constants' as c;
+
+.swiper {
+  margin: auto;
+  padding: 2rem 0;
+}
+
+//TODO to add mobile support change this width and padding above and font-size for captions
+.swiper-wrapper {
+  width: 65%;
+  margin: auto;
+}
+
+.swiper-slide {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  width: 40%;
+  margin: auto;
+
+  & img {
+    display: block;
+    height: 75vh;
+    min-height: 300px;
+    max-height: 600px;
+  }
+
+  &_caption {
+    position: absolute;
+    left: 1rem;
+    padding: 1rem;
+    background-color: c.$background-dark_darkest;
+    opacity: 0.9;;
+    border-radius: c.$border-radius;
+  }
+
+  & h2 {
+    top: 1rem;
+  }
+
+  & h5 {
+    top: 6rem;
+  }
+}
