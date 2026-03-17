@@ -1,0 +1,30 @@
+.table-cont1{
+ margin-top: 3em;
+ display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    width: 70%;
+}
+
+.table-cont1 h4 {
+    color: white
+}
+
+.container5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.table-cont1 h3 {
+    color: rgb(5, 209, 107) !important;
+    font-size: 2em !important;
+    margin-bottom: 1em;
+}
+
+.table-cont{
+    width: 70%;
+}

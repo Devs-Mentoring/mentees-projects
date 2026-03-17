@@ -1,0 +1,54 @@
+.container4{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+.asset1{
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    width: 100%;
+
+}
+.text-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    gap: 1em;
+}
+
+.container4 h3 {
+    color: rgb(5, 209, 107) ;
+    font-size: 2em !important;
+}
+
+
+.btn-search{
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(40, 141, 71) !important;
+    border-radius: 1em !important;
+    width: 6.5em;
+    height: 2.5em;
+    
+}
+
+.btn-search:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-color: rgb(2, 94, 48) !important;
+      
+}
+
+
+.table{
+    width: 60%;
+}
+
