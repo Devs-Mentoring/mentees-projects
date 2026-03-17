@@ -1,0 +1,94 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    image: ${ECR_REGISTRY}/pixel_perfect:latest
+    entrypoint: ["/bin/sh", "-c"]
+    environment:
+      - SECRET_KEY
+      - ALLOWED_HOST_1
+      - SITE_ID
+      - EMAIL
+      - EMAIL_PASSWORD
+      - CLIENT_ID
+      - PROJECT_ID
+      - AUTH_URI
+      - TOKEN_URI
+      - AUTH_PROVIDER_X509_CERT_URL
+      - CLIENT_SECRET
+      - GOOGLE_OAUTH_REDIRECT_URI
+      - REDIRECT_URI_1
+      - REDIRECT_URI_2
+      - ECR_REGISTRY
+      - DB_NAME
+      - DB_USER
+      - DB_PASSWORD
+      - DB_HOST
+      - DB_PORT
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    depends_on:
+      - redis
+      - postgres
+    command:
+      - |
+        python manage.py makemigrations
+        python manage.py migrate
+        python manage.py collectstatic --noinput
+        python manage.py runserver 0.0.0.0:80
+    volumes:
+      - /home/pixel_perfect/models/enhance:/app/image_processing/models/enhance
+      - /home/pixel_perfect/media/:/app/media/
+    ports:
+      - "80:80"
+
+  queue:
+    build: .
+    image: ${ECR_REGISTRY}/pixel_perfect:latest
+    environment:
+      - DJANGO_SETTINGS_MODULE=pixel_perfect.settings
+      - SECRET_KEY
+      - ALLOWED_HOST_1
+      - SITE_ID
+      - EMAIL
+      - EMAIL_PASSWORD
+      - CLIENT_ID
+      - PROJECT_ID
+      - AUTH_URI
+      - TOKEN_URI
+      - AUTH_PROVIDER_X509_CERT_URL
+      - CLIENT_SECRET
+      - GOOGLE_OAUTH_REDIRECT_URI
+      - REDIRECT_URI_1
+      - REDIRECT_URI_2
+      - ECR_REGISTRY
+      - DB_NAME
+      - DB_USER
+      - DB_PASSWORD
+      - DB_HOST
+      - DB_PORT
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+
+    depends_on:
+      - web
+      - redis
+      - postgres
+    entrypoint: python3 -m celery -A images.celery_tasks:celery_obj worker -l INFO
+    volumes:
+      - /home/pixel_perfect/models/enhance:/app/image_processing/models/enhance
+      - /home/pixel_perfect/media/:/app/media/
+  redis:
+    image: redis:7-alpine
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    ports:
+       - "5432:5432"
