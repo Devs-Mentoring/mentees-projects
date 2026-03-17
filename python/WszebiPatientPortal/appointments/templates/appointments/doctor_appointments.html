@@ -1,0 +1,70 @@
+{% extends 'appointments/base.html' %}
+
+{% block title %}Your appointments{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+  <h2>Your upcoming appointment as doctor</h2>
+  {% if upcoming_appointment %}
+    <ul class="list-group mb-4">
+      {% for appointment in upcoming_appointment %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>{{ appointment.date }} {{ appointment.time }}</strong> – Patient: {{ appointment.user }}
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <a href="{% url 'appointments:appointment-note-update' appointment.pk %}" class="btn btn-sm btn-secondary mr-2">
+              {% if appointment.notes %}
+                Update note
+              {% else %}
+                Create note
+              {% endif %}
+            </a>
+            {% if not appointment.is_confirmed %}
+              <span class="text-warning fw-bold">
+                x Not Confirmed
+              </span>
+            {% else %}
+              <span class="text-success fw-bold">
+                ✓ Confirmed
+              </span>
+            {% endif %}
+
+            <a href="{% url 'appointments:appointment-delete' appointment.pk %}" class="btn btn-danger btn-sm">
+              Cancel appointment
+            </a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No upcoming appointments as doctor.</p>
+  {% endif %}
+
+  <h2>Your past appointment as doctor</h2>
+  {% if past_appointment %}
+    <ul class="list-group mb-4">
+      {% for appointment in past_appointment %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>{{ appointment.date }} {{ appointment.time }}</strong> – Patient: {{ appointment.user }}
+      </div>
+      <div class="d-flex align-items-center">
+        <a href="{% url 'appointments:appointment-note-update' appointment.pk %}" class="btn btn-sm btn-secondary mr-2">
+          {% if appointment.notes %}
+            Update note
+          {% else %}
+            Create note
+          {% endif %}
+        </a>
+      </div>
+    </li>
+  {% endfor %}
+    </ul>
+  {% else %}
+    <p>No past appointments as doctor</p>
+  {% endif %}
+
+</div>
+{% endblock %}

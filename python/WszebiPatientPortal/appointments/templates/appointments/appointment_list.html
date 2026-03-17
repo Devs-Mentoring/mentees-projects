@@ -1,0 +1,72 @@
+{% extends "appointments/base.html" %}
+{% block title %}Weekly Doctor Schedule{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <form method="get" class="form-inline">
+    {{ filter.form.as_p }}
+    <button type="submit" class="btn btn-primary">Filter</button>
+    <a href="{% url 'appointments:appointments-list' %}" class="button">Clear filter</a>
+</form>
+    <h1 class="text-center">Weekly Doctor Schedule</h1>
+    <!-- Nawigacja paginacji -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="?week={{ previous_week }}" class="btn btn-primary {% if not previous_week %}disabled{% endif %}">
+            &larr; Previous Week
+        </a>
+        <h4>Week of {{ start_of_week|date:"Y-m-d" }} - {{ end_of_week|date:"Y-m-d" }}</h4>
+        <a href="?week={{ next_week }}" class="btn btn-primary {% if not next_week %}disabled{% endif %}">
+            Next Week &rarr;
+        </a>
+    </div>
+
+    <!-- Harmonogram dla każdego lekarza -->
+    {% for doctor, schedule_week in doctor_week_schedule.items %}
+    <div class="mb-5">
+
+        <h2 class="text-center">
+            <a href="{% url 'users:doctor-details' doctor.id %}">
+                {{ doctor }}
+            </a>
+        </h2>
+
+        <div class="row row-cols-7">
+            {% for day, slots in schedule_week.items %}
+            <div class="col text-center border p-2 d-flex flex-column">
+                <!-- Nagłówek dnia -->
+                <h5 class="bg-info text-white py-2">{{ day|date:"l" }} <br> {{ day|date:"Y-m-d" }}</h5>
+
+                <!-- Treść dnia -->
+                <div class="flex-grow-1">
+                    {% if slots|length == 0 or slots.0.time is None %}
+                    <p class="text-muted">Doctor is not available today</p>
+                    {% else %}
+                    <ul class="list-unstyled">
+                        {% for slot in slots %}
+                        <li class="py-2 {% if slot.is_taken or slot.is_past %}bg-light text-muted{% else %}bg-success text-white{% endif %} border mb-1">
+                            {{ slot.time }}
+                            {% if not slot.is_taken and not slot.is_past %}
+                            <form method="POST" action="{% url 'appointments:appointment-create' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="doctor" value="{{ doctor.id }}">
+                                <input type="hidden" name="date" value="{{ day }}">
+                                <input type="hidden" name="time" value="{{ slot.time }}">
+                                <button type="submit" value="Submit" onclick="return confirm('Are you sure you want to book?')">Book</button>
+                            </form>
+                            {% elif slot.is_taken %}
+                            <span class="badge bg-danger">Booked</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Unavailable</span>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
